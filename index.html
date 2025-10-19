@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV Años - Liseth Narcia</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <!-- Decoraciones globales (ahora visibles siempre) -->
+  <div class="decoraciones-fijas">
+    <img src="./verde-dorado-flor.png" alt="Decoración superior" class="decor decor-superior">
+    <img src="./verde-dorado-flor2.png" alt="Decoración inferior" class="decor decor-inferior">
+    <img src="./hojas-vertical.png" alt="Marco lateral izquierdo" class="decor decor-izquierda">
+    <img src="./hoja vertical2.png" alt="Marco lateral derecho" class="decor decor-derecha">
+  </div>
+
+  <!-- Primera Vista -->
+  <div id="vista1" class="vista">
+    <div class="contenido-vista1 marco">
+      <h1>Mis XV</h1>
+      <h2>Liseth Narcia</h2>
+      <a href="#vista2" class="sobre-link">
+        <img src="./sobre.png" alt="Sobre" class="sobre-imagen">
+      </a>
+      <p class="click-aqui">
+        Dale click al sobre para abrir la invitación
+        <i class="fas fa-arrow-down"></i>
+      </p>
+    </div>
+  </div>
+
+  <!-- Segunda Vista -->
+  <div id="vista2" class="vista">
+    <div class="contenido-vista2 marco">
+      <button id="play-btn" class="play-button"><i class="fas fa-play"></i></button>
+
+      <p class="texto-invitacion">
+        Cumplir 15 años y compartirlo con los que amo es una manera de ser feliz y celebrar estos quince años que me han sido dados para fortalecer los dones que Dios me dio en todos los actos de mi vida.
+      </p>
+
+      <div class="nombres-padres">
+        <h3>Miguel Narcia</h3>
+        <span>&</span>
+        <h3>Cindy Jimenez</h3>
+      </div>
+
+      <p class="texto-complacen">Se complacen en invitarles a celebrar los</p>
+      <h1 class="titulo-xv">XV</h1>
+      <p class="texto-hija">De su adorada hija:</p>
+      <h2 class="nombre-quinceanera">Lizeth Narcia</h2>
+
+      <div class="fecha-hora">
+        <div class="fecha-item">
+          <span>SÁBADO</span>
+          <strong>27</strong>
+          <span>DICIEMBRE 2025</span>
+        </div>
+        <div class="fecha-item">
+          <span>HORA</span>
+          <strong>8:00</strong>
+          <span>P.M.</span>
+        </div>
+      </div>
+
+      <div class="lugar">
+        <p class="nombre-salon">"SALÓN ERIKA"</p>
+        <p class="direccion-salon">252 Central Sur Suchiapa, Chiapas</p>
+        <div class="mapa-contenedor">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d955.7726993805323!2d-93.1030806042846!3d16.622211653275485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1756172553616!5m2!1ses!2smx" 
+            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="confirmacion">
+        <a href="https://api.whatsapp.com/send?phone=9612743191&text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Liz.%20¡Gracias%20por%20la%20invitación!"
+          class="btn-confirmar" target="_blank">
+          Confirmar asistencia :)
+        </a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const boton = document.getElementById("play-btn");
+    const musica = new Audio("./evangeline.mp3"); // Ruta a tu archivo de música
+    musica.loop = true; // Hace que la música se repita
+
+    boton.addEventListener("click", () => {
+      // Iniciar la música
+      musica.play().catch(err => console.log("El navegador bloqueó el audio:", err));
+
+      // Scroll automático (tu código)
+      const destino = document.querySelector(".btn-confirmar");
+      const posicionDeParada = destino.getBoundingClientRect().top + window.scrollY + 60;
+      
+      const velocidad = 5; // píxeles por frame
+      const intervalo = setInterval(() => {
+        window.scrollBy(0, velocidad);
+        if (window.scrollY + window.innerHeight >= posicionDeParada) {
+          clearInterval(intervalo);
+        }
+      }, 10);
+    });
+  });
+</script>
+
+</body>
+</html>
